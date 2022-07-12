@@ -7,10 +7,10 @@ somente a computadores em modo texto (terminal).
 Especificação
 Ao ser iniciado, seu programa deve cumprimentar o usuário e imprimir um pequeno menu de opções. As
 opções possíveis são:
-. Novo jogo
-. Ver últimos 5 jogos
-. Limpar histórico
-. Sair
+- Novo jogo
+- Ver últimos 5 jogos
+- Limpar histórico
+- Sair
 
 Seu programa deve ler a opção escolhida pelo usuário e proceder como será descrito nas seções
 seguintes. Caso o usuário digite qualquer coisa diferente dos números de 1 a 4, você deve informar que a
