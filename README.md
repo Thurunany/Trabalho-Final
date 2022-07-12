@@ -4,7 +4,7 @@ Uma empresa gostaria de oferecer a seus funcionários um jogo simples de adivinh
 eles passem o seu tempo no horáriod e almoço. Nessa empresa, no entanto, os funcionários tem acesso
 somente a computadores em modo texto (terminal). 
 
-Especificação
+## Especificação:
 Ao ser iniciado, seu programa deve cumprimentar o usuário e imprimir um pequeno menu de opções. As
 opções possíveis são:
 - Novo jogo
@@ -16,7 +16,7 @@ Seu programa deve ler a opção escolhida pelo usuário e proceder como será de
 seguintes. Caso o usuário digite qualquer coisa diferente dos números de 1 a 4, você deve informar que a
 opção não é válida e voltar a exibir o menu.
 
-Novo jogo
+## Novo jogo
 Caso a opção 1 seja escolhida no menu inicial, seu programa deve começar um novo jogo de
 adivinhação. O computador deve escolher e se lembrar de um número secreto aleatório entre 1 e 100,
 que não será exibido ao usuário, e o jogador tentará adivinhá-lo, informando números dentro desse
@@ -81,9 +81,9 @@ Jogo 4: 4 tentativas
 Jogo 5: 6 tentativas
 
 Após o histórico ser apresentado, o programa deve continuar a repetir o menu inicial.
-Limpar histórico
 
 
+## Limpar histórico::
 Ao escolher a opção 3 do menu, o programa deve limpar a memória (dica: o programa precisa se lembrar
 quantos jogos estão contidos na memória, entre 0 e 5), e imprimir uma mensagem avisando o usuário
 que o histórico foi zerado. Após isso feito, o programa deve retornar ao menu inicial.
