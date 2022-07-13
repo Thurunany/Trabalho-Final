@@ -1,19 +1,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 
-int tentativas = 0;
+int tentativa = 0;
 int i;
 int historico[4];
 
-int jogo(){
+int jogo(int tentativas){
     int numPlayer = 0;
     int pos = 0;
-    //numero aleatorio
-    // srand(time(NULL));
-    // int numSecreto = rand() % 100 + 1;
-
-    int numSecreto = 28;
+    
+    // numero aleatorio
+    srand(time(NULL));
+    int numSecreto = rand() % 100 + 1;
 
     printf("NOVO JOGO \nAdvinhe o número!\n");
     scanf("%d", &numPlayer);
@@ -38,27 +38,36 @@ int jogo(){
     return tentativas;
 }
 
-int contador(){
-    int pos = 0;
-    int size = 4;
-    
-    for(i=0;i<=4;i++){
-        printf("Jogo %d:  ",i+1);
-        printf("%d tentativas\n", historico[i]);
-    }
-}
+// Não consegui fazer o contador por fora, as tentativas estavam somando!! 
+
+// int contador(){
+//     for(i=0;i<=4;i++){
+//         printf("Jogo %d:  ",i+1);
+//         printf("%d tentativas\n", historico[i]);
+//     }
+// }
 
 
 int escolha(int opcao){
     switch(opcao){
          case 1:{
-            return printf("Parabéns! Você acertou em %d tentativas!\n", jogo(tentativas));
+            return printf("Parabéns! Você acertou em %d tentativas!\n", jogo(tentativa));
          } break;
          case 2:{
-            return printf("Este é seu historico!\n", contador());
+            for(i=0;i<=4;i++){
+                printf("Jogo %d:  ",i+1);
+                printf("%d tentativas\n", historico[i]);
+            }
+            return printf("Este é seu historico!\n");
          } break;
          case 3:{
-            return printf("Limpar histórico\n");
+            printf("Limpar histórico\n");
+            memset(historico, 0, 16);
+            for(i=0;i<=4;i++){
+                printf("Jogo %d:  ",i+1);
+                printf("%d tentativas\n", historico[i]);
+            }
+            return printf("Este é seu historico agora limpo!\n");
          } break;      
          default: {
          }break;
