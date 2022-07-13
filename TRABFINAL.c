@@ -62,7 +62,7 @@ int escolha(int opcao){
          } break;
          case 3:{
             printf("Limpar histórico\n");
-            memset(historico, 0, 16);
+            memset(historico, 0, 16); //Não funciona, utilizar for
             for(i=0;i<=4;i++){
                 printf("Jogo %d:  ",i+1);
                 printf("%d tentativas\n", historico[i]);
