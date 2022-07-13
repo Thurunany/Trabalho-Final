@@ -7,13 +7,19 @@
 // manualmente mover 
 
 
+int tentativa = 0;
+int i;
+int historico[4];
+
 int jogo(int tentativas){
     int numPlayer = 0;
-    int historico[5];
+    int indice;
 
     //numero aleatorio
-    srand(time(NULL));
-    int numSecreto = rand() % 100 + 1;
+    // srand(time(NULL));
+    // int numSecreto = rand() % 100 + 1;
+
+    int numSecreto = 28;
 
     printf("NOVO JOGO \nAdvinhe o número!\n");
     scanf("%d", &numPlayer);
@@ -30,24 +36,33 @@ int jogo(int tentativas){
         scanf("%d", &numPlayer);       
     }}
 
-historico[5] = tentativas;
-printf("%d \n", historico[5]);
+    int pos = 0;
+    int size = 4;
+    
+    // for(i=0;i<=4;i++){
+    //     historico[i-1]=historico[i];
+    //     historico[i]= tentativas;
+    // }
 
-return tentativas, historico[5];
+    for(i=size-1;i>=pos-1;i--){
+         historico[i+1]=historico[i];
+         historico[pos-1]= tentativas;
+    }
+
+
+return tentativas;
 }
 
 int escolha(int opcao){
-    int tentativa = 0;
-    int array[5];
-    array[5] = tentativa;
-
     switch(opcao){
          case 1:{
             return printf("Parabéns! Você acertou em %d tentativas!\n", jogo(tentativa));
-            array[5] = tentativa;
          } break;
          case 2:{
-            return printf("Historico = %d\n", array[5]);
+            for(i=0;i<=4;i++){
+                printf("Jogos %d:  ",i+1);
+                printf("%d tentativas\n", historico[i]);
+            }
          } break;
          case 3:{
             return printf("Limpar histórico\n");
