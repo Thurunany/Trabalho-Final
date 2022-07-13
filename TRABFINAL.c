@@ -15,7 +15,7 @@ int jogo(int tentativas){
     srand(time(NULL));
     int numSecreto = rand() % 100 + 1;
 
-    printf("NOVO JOGO \nAdvinhe o número!\n");
+    printf("\tNOVO JOGO \nAdvinhe o número!\n");
     scanf("%d", &numPlayer);
 
     if(numPlayer != numSecreto) {
@@ -61,7 +61,6 @@ int escolha(int opcao){
             return printf("Este é seu historico!\n");
          } break;
          case 3:{
-            printf("Limpar histórico\n");
             memset(historico, 0, 16); //Não funciona, utilizar for
             for(i=0;i<=4;i++){
                 printf("Jogo %d:  ",i+1);
@@ -81,7 +80,7 @@ int main(){
 
     //Jogador escolhe opção:
     while(opcoes != 4){ 
-        printf("\nMENU\nOlá jogador! Escolha uma opção:\n 1- Novo Jogo\n 2- Ver últimos 5 jogos!\n 3- Limpar histórico\n 4- Sair\n");
+        printf("\n \t\t MENU \nOlá jogador! Escolha uma opção:\n 1- Novo Jogo\n 2- Ver últimos 5 jogos!\n 3- Limpar histórico\n 4- Sair\n");
         scanf("%d", &opcoes);
         while(opcoes < 1 || opcoes > 4) {
             printf("Número errado, escolha uma opção valida!\nTente de novo! \nEscolha uma opção:\n 1- Novo Jogo\n 2- Ver últimos 5 jogos!\n 3- Limpar histórico\n 4- Sair\n");
