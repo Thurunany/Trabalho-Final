@@ -1,14 +1,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 
+int tentativa = 0;
 int i;
-int historico[5];
-int pos = 0;
+int historico[4];
 
-
-int jogo() {
+int jogo(int tentativas){
     int numPlayer = 0;
+    int pos = 0;
     
     // numero aleatorio
     srand(time(NULL));
@@ -16,8 +17,6 @@ int jogo() {
 
     printf("\tNOVO JOGO \nAdvinhe o número!\n");
     scanf("%d", &numPlayer);
-
-    int tentativas = 0;
 
     if(numPlayer != numSecreto) {
         while(numPlayer < numSecreto || numPlayer > numSecreto) {
@@ -31,59 +30,55 @@ int jogo() {
         scanf("%d", &numPlayer);       
     }}
     
-    if(pos >= 5) {
-        for(i = 0; i < 5; i++){
-        historico[i-1] = historico[i];
-        }
-        historico[4] = tentativas;
-        
-    } else {
-        historico[pos] = tentativas;
-    }
-
-    pos++;
+    for(i=4-1;i>=pos-1;i--){
+        historico[i+1]=historico[i];
+        historico[pos-1]= tentativas;
+    }    
     
     return tentativas;
 }
 
-void executa(int opcao) {
-    switch(opcao) {
-         case 1: {
-            printf("Parabéns! Você acertou em %d tentativas!\n", jogo());
+// Não consegui fazer o contador por fora, as tentativas estavam somando!! 
+
+// int contador(){
+//     for(i=0;i<=4;i++){
+//         printf("Jogo %d:  ",i+1);
+//         printf("%d tentativas\n", historico[i]);
+//     }
+// }
+
+
+int escolha(int opcao){
+    switch(opcao){
+         case 1:{
+            return printf("Parabéns! Você acertou em %d tentativas!\n", jogo(tentativa));
          } break;
-         case 2: {
-            if(pos > 0) {
-                int quantidade = pos;
-                if(quantidade > 5) {
-                    quantidade = 5;
-                }
-                for(i = 0; i < quantidade; i++) {
-                    printf("Jogo %d:  ",i+1);
-                    printf("%d tentativas\n", historico[i]);
-                }
-                printf("Este é seu historico!\n");
-            } else {
-                printf("O histórico está vazio!\n");
+         case 2:{
+            for(i=0;i<=4;i++){
+                printf("Jogo %d:  ",i+1);
+                printf("%d tentativas\n", historico[i]);
             }
+            return printf("Este é seu historico!\n");
          } break;
-         case 3: {
-            if(pos > 0) {
-                for(i = 0; i < pos; i++){
-                    historico[i] = 0;
-                    pos = 0;
-                printf("O histórico agora está limpo!\n");
-                }
-            } else {
-                printf("O histórico está vazio!\n");
+         case 3:{
+            memset(historico, 0, 16); //Não funciona, utilizar for
+            for(i=0;i<=4;i++){
+                printf("Jogo %d:  ",i+1);
+                printf("%d tentativas\n", historico[i]);
             }
+            return printf("Este é seu historico agora limpo!\n");
          } break;      
          default: {
-         } break;
+         }break;
     }
+    return opcao;
 }
+
 
 int main(){
     int opcoes;
+
+    //Jogador escolhe opção:
     while(opcoes != 4){ 
         printf("\n \t\t MENU \nOlá jogador! Escolha uma opção:\n 1- Novo Jogo\n 2- Ver últimos 5 jogos!\n 3- Limpar histórico\n 4- Sair\n");
         scanf("%d", &opcoes);
@@ -91,7 +86,7 @@ int main(){
             printf("Número errado, escolha uma opção valida!\nTente de novo! \nEscolha uma opção:\n 1- Novo Jogo\n 2- Ver últimos 5 jogos!\n 3- Limpar histórico\n 4- Sair\n");
             scanf("%d", &opcoes);
         }
-        executa(opcoes);
+        opcoes = escolha(opcoes); 
     }
     return EXIT_SUCCESS;
 }
