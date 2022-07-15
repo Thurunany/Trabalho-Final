@@ -1,5 +1,6 @@
 # Trabalho Final Algoritmos
 
+
 Uma empresa gostaria de oferecer a seus funcionários um jogo simples de adivinhação que permita que
 eles passem o seu tempo no horáriod e almoço. Nessa empresa, no entanto, os funcionários tem acesso
 somente a computadores em modo texto (terminal). 
