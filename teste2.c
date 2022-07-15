@@ -67,10 +67,14 @@ void executa(int opcao) {
             }
          } break;
          case 3: {
-            for(i = 0; i < pos; i++){
-                historico[i] = 0;
-                pos = 0;
-             printf("O histórico agora está limpo!\n");
+            if(pos > 0) {
+                for(i = 0; i < pos; i++){
+                    historico[i] = 0;
+                    pos = 0;
+                printf("O histórico agora está limpo!\n");
+                }
+            } else {
+                printf("O histórico está vazio!\n");
             }
          } break;      
          default: {
