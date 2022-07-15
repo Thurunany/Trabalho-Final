@@ -12,9 +12,10 @@ int jogo(int tentativas){
     int numPlayer = 0;
     
     // numero aleatorio
-    srand(time(NULL));
-    int numSecreto = rand() % 100 + 1;
+    // srand(time(NULL));
+    // int numSecreto = rand() % 100 + 1;
 
+    int numSecreto = 2;
     printf("\tNOVO JOGO \nAdvinhe o número!\n");
     scanf("%d", &numPlayer);
 

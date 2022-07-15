@@ -11,10 +11,8 @@ int jogo() {
     int numPlayer = 0;
     
     // numero aleatorio
-    // srand(time(NULL));
-    // int numSecreto = rand() % 100 + 1;
-
-    int numSecreto = 2;
+    srand(time(NULL));
+    int numSecreto = rand() % 100 + 1;
 
     printf("\tNOVO JOGO \nAdvinhe o número!\n");
     scanf("%d", &numPlayer);
@@ -34,9 +32,11 @@ int jogo() {
     }}
     
     if(pos >= 5) {
-        // Move o histórico pra trás!
-        // for de 0 até 4, 3 a 4 linhas
+        for(i = 0; i < 5; i++){
+        historico[i-1] = historico[i];
+        }
         historico[4] = tentativas;
+        
     } else {
         historico[pos] = tentativas;
     }
@@ -67,31 +67,11 @@ void executa(int opcao) {
             }
          } break;
          case 3: {
-            if(pos > 0) {
-                int quantidade = pos;
-                if(quantidade > 5) {
-                    quantidade = 5;
-                }
-                for(i=0; i<=4; i++){
-                    historico[i] = 0;
-                }
-                for(i = 0; i < quantidade; i++) {
-                    printf("Jogo %d:  ",i+1);
-                    printf("%d tentativas\n", historico[i]);
-                }
-                printf("Este é seu historico agora limpo!\n");
-            } else {
-                printf("O histórico está vazio!\n");
+            for(i = 0; i < pos; i++){
+                historico[i] = 0;
+                pos = 0;
+             printf("O histórico agora está limpo!\n");
             }
-
-            // for(i=0; i<=4; i++){
-            //     historico[i] = 0;
-            // }
-            // for(i = 0; i < quantidade; i++){
-            //     printf("Jogo %d:  ", i+1);
-            //     printf("%d tentativas\n", historico[i]);
-            // }
-            // printf("Este é seu historico agora limpo!\n");
          } break;      
          default: {
          } break;
@@ -100,7 +80,6 @@ void executa(int opcao) {
 
 int main(){
     int opcoes;
-    //Jogador escolhe opção:
     while(opcoes != 4){ 
         printf("\n \t\t MENU \nOlá jogador! Escolha uma opção:\n 1- Novo Jogo\n 2- Ver últimos 5 jogos!\n 3- Limpar histórico\n 4- Sair\n");
         scanf("%d", &opcoes);
