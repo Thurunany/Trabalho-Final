@@ -67,14 +67,31 @@ void executa(int opcao) {
             }
          } break;
          case 3: {
-            for(i=0; i<=4; i++){
-                historico[i] = 0;
+            if(pos > 0) {
+                int quantidade = pos;
+                if(quantidade > 5) {
+                    quantidade = 5;
+                }
+                for(i=0; i<=4; i++){
+                    historico[i] = 0;
+                }
+                for(i = 0; i < quantidade; i++) {
+                    printf("Jogo %d:  ",i+1);
+                    printf("%d tentativas\n", historico[i]);
+                }
+                printf("Este é seu historico agora limpo!\n");
+            } else {
+                printf("O histórico está vazio!\n");
             }
-            for(i=0; i<=4; i++){
-                printf("Jogo %d:  ", i+1);
-                printf("%d tentativas\n", historico[i]);
-            }
-            printf("Este é seu historico agora limpo!\n");
+
+            // for(i=0; i<=4; i++){
+            //     historico[i] = 0;
+            // }
+            // for(i = 0; i < quantidade; i++){
+            //     printf("Jogo %d:  ", i+1);
+            //     printf("%d tentativas\n", historico[i]);
+            // }
+            // printf("Este é seu historico agora limpo!\n");
          } break;      
          default: {
          } break;
